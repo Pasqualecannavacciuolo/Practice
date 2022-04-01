@@ -1,2 +1,4 @@
-package com.utility;public class DBConnection {
+package com.utility;
+
+public class DBConnection {
 }
