@@ -44,25 +44,36 @@ public class Connection {
      * This method execute a query
      * Better suited for SELECT operations
      */
-    public void executeStatementSelect(String query) throws SQLException{
+    public void executeStatementSelect(String query) throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         statement.execute(query);
+        statement.close();
+        getConnection().close();
     }
 
     /*
      * This method execute a query
      * Better suited for INSERT - UPDATE - DELETE operations
      */
-    public java.sql.Statement executeStatementUpdate(String query) throws SQLException {
+    public java.sql.Statement executeStatementUpdate(String query) throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         statement.executeUpdate(query);
+        statement.close();
+        getConnection().close();
         return statement;
     }
 
+    // This method prepare a PREPARED STATEMENT
     public java.sql.PreparedStatement preparePreparedStatement(String query) throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
         preparedStatement = this.getConnection().prepareStatement(query);
         return preparedStatement;
     }
 
-    public void executePreparedStatement() throws SQLException {
-        this.preparedStatement.executeUpdate();
+    // This method execute a PREPARED STATEMENT
+    public void executePreparedStatement() throws SQLException, IOException, ClassNotFoundException, InstantiationException, IllegalAccessException {
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+        getConnection().close();
     }
+    
+
+
 }

@@ -8,6 +8,5 @@ public class Tester {
         DBOperations dbOperations = new DBOperations();
         dbOperations.createTable();
         dbOperations.insertIntoTable();
-        System.out.println("FERMO");
     }
 }

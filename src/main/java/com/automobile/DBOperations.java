@@ -8,7 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class DBOperations {
-    Auto auto = new Auto("Audi", "DE");
+    Auto auto = new Auto("Renault", "FRA");
     Connection conn = Connection.getInstance();
     ReadProperties rd = new ReadProperties();
 
@@ -32,7 +32,6 @@ public class DBOperations {
         ps = conn.preparePreparedStatement(sql);
         ps.setString(1, brand);
         ps.setString(2, nationality);
-
         conn.executePreparedStatement();
 
     }
